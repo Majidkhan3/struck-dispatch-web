@@ -1,6 +1,19 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/layout/Header";
+import "animate.css";
+
+import { DM_Sans } from "next/font/google";
+import { register } from "swiper/element/bundle";
+import MobailHeader1 from "@/components/layout/MobileHead";
+import Footer from "@/components/layout/Footer";
+register();
+const DM_SansFont = DM_Sans({
+  weight: ["400", "500", "700"],
+  subsets: ["latin"],
+  variable: "--dm-saans-font",
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,10 +37,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body cz-shortcut-listen="true" className={DM_SansFont.variable}>
+        <Header />
+        <MobailHeader1 />
         {children}
+        <Footer />
       </body>
     </html>
   );
